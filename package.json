@@ -4,7 +4,7 @@
   "description": "Repositório do backend da API desenvolvida no 5º semestre do curso de ADS da FATEC SJC.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "dev": "nodemon src/index.ts"
   },
   "keywords": [],
@@ -12,8 +12,8 @@
   "license": "ISC",
   "dependencies": {
     "@types/bcrypt": "^5.0.2",
-    "@types/express": "^4.17.21",
     "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
     "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
@@ -26,6 +26,10 @@
     "typescript": "^5.5.4"
   },
   "devDependencies": {
-    "@types/jsonwebtoken": "^9.0.6"
+    "@babel/preset-typescript": "^7.24.7",
+    "@types/jest": "^29.5.12",
+    "@types/jsonwebtoken": "^9.0.6",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.2.5"
   }
 }
