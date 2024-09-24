@@ -1,11 +1,8 @@
-import { Router } from "express";
-import appDataSource from "../infra/data-source";
-import LocationService from "../services/location.service";
-import { Location } from "../infra/entities/location";
-import LocationController from "../controller/location.controller";
+import { Router } from "express"
+import LocationService from "../services/location.service"
+import { LocationController } from "../controller"
 
 export const locationRouter = Router()
-
 
 const locationService = new LocationService()
 const locationController = new LocationController(locationService)

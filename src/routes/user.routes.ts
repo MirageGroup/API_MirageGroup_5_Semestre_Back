@@ -1,9 +1,9 @@
-import { Router } from "express";
+import { Router } from "express"
 
-import appDataSource from "../infra/data-source";
-import { User } from "../infra/entities/user";
-import { UserService } from "../services";
-import { UserController } from "../controller";
+import appDataSource from "../infra/data-source"
+import { User } from "../infra"
+import { UserService } from "../services"
+import { UserController } from "../controller"
 
 const userRouter = Router()
 
