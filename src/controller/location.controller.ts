@@ -13,8 +13,11 @@ export default class LocationController {
     ) {}
 
     public async createLocation(req: any, res: any) {
+        const date = new Date()
+
         const {
             name = null,
+            datetime = date.toLocaleDateString('pt-BR'),
             crop_name = null,
             latitude,
             longitude,
@@ -35,6 +38,7 @@ export default class LocationController {
     
         const location = {
             name,
+            datetime,
             crop_name,
             latitude,
             longitude,
