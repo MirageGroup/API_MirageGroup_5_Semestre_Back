@@ -1,37 +1,29 @@
-import Express, { Request, Response } from 'express';
-import cors from "cors";
-import userRouter from './routes/user.routes';
+import Express, { Request, Response } from 'express'
+import cors from 'cors'
 import appDataSource from './infra/data-source'
-import { locationRouter } from './routes/location.routes';
-import { db } from './infra/firebase-config';
+import { locationRouter, userRouter } from './routes'
 
 const app = Express()
-require('dotenv').config()
+require('dotenv').config() 
 
 app.use(Express.json())
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: 'http://localhost:3000', 
   credentials: true
 }))
 
-appDataSource.initialize().then((connection) => {
-  console.log("Banco de dados inicializado")
+appDataSource.initialize().then(() => {
+  console.log('Banco de dados inicializado')
 
-  if (db) {
-    console.log('Firebase inicializado com sucesso');
-  } else {
-    console.error('Erro ao inicializar o Firebase');
-  }
-
-  app.listen(process.env.PORT, () => {
-    console.log(`Ta rodando nessa porta aqui tá ✌️:  http://localhost:${process.env.PORT}`)
+  app.listen(process.env.PORT || 3000, () => {
+    console.log(`Ta rodando nessa porta aqui tá ✌️: http://localhost:${process.env.PORT || 3000}`)
   })
-})
+}).catch(error => console.log('Erro ao inicializar o banco de dados', error))
 
-// Rotas onde iremos fazer as req e res
-app.get('/', (req, res) => {
+// Rota default
+app.get('/', (req: Request, res: Response) => {
   res.send('Olá Kersys')
 })
 
 app.use('/user', userRouter)
-app.use('/location', locationRouter)
+app.use('/locations', locationRouter)
