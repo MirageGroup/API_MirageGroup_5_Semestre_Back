@@ -5,7 +5,7 @@ import { User } from "../infra"
 import { UserService } from "../services"
 import { UserController } from "../controller"
 
-const userRouter = Router()
+export const userRouter = Router()
 
 const service = new UserService(appDataSource.getRepository(User))
 const controller = new UserController(service)
