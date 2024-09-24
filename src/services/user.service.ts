@@ -1,7 +1,7 @@
-import { EntityNotFoundError, Repository } from "typeorm";
+import { EntityNotFoundError, Repository } from "typeorm"
 import bcrypt from 'bcrypt'
 
-import { User } from "../infra/entities/user";
+import { User } from "../infra"
 
 export default class UserService {
     
