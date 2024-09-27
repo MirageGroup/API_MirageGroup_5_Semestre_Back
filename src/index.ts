@@ -2,6 +2,7 @@ import Express, { Request, Response } from 'express'
 import cors from 'cors'
 import appDataSource from './infra/data-source'
 import { locationRouter, userRouter } from './routes'
+import './jobs/weatherUpdateCron'
 
 const app = Express()
 require('dotenv').config() 
@@ -13,7 +14,7 @@ app.use(cors({
 }))
 
 appDataSource.initialize().then(() => {
-  console.log('Banco de dados inicializado')
+  console.log('Banco de 🎲🎲🎲 rodando!')
 
   app.listen(process.env.PORT || 3000, () => {
     console.log(`Ta rodando nessa porta aqui tá ✌️: http://localhost:${process.env.PORT || 3000}`)
