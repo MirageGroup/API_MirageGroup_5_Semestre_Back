@@ -1,6 +1,7 @@
 import LocationService from "../services/location.service"
 import { app } from "../infra/firebase-config"
-import { collection, getFirestore } from 'firebase/firestore'
+import { collection, doc, getFirestore, updateDoc } from 'firebase/firestore'
+import { OpenWeatherService } from "../services"
 
 const firestore = getFirestore(app)
 
@@ -8,6 +9,8 @@ const firestore = getFirestore(app)
 export const localesCollection = collection(firestore, 'locales')
 
 export default class LocationController {
+    private openWeatherService = new OpenWeatherService()
+
     public constructor(
         private readonly locationService: LocationService
     ) {}
@@ -21,13 +24,13 @@ export default class LocationController {
             crop_name = null,
             latitude,
             longitude,
-            temperature = 0,
+            temperature = null,
             temperature_min = null,
             temperature_max = null,
-            rainfall = 0,
+            rainfall = null,
             rainfall_min = null,
             rainfall_max = null,
-            humidity = 0,
+            humidity = null,
             humidity_min = null,
             humidity_max = null
         } = req.body
@@ -54,11 +57,23 @@ export default class LocationController {
         }
     
         try {
-            await this.locationService.createLocation(location)
-            res.status(201).send('Location created successfully')
+            const locationRef = await this.locationService.createLocation(location);
+            
+            const weatherData = await this.openWeatherService.fetchWeatherData(latitude, longitude);
+            const currentTemperatureC = this.openWeatherService.convertKelvinToCelsius(weatherData.main.temp);
+            const formattedTemperature = currentTemperatureC.toFixed(2);
+            const humidity = weatherData.main.humidity;
+
+            const locationDoc = doc(firestore, 'locales', locationRef.id);
+            await updateDoc(locationDoc, {
+                temperature: parseFloat(formattedTemperature),
+                humidity
+            });
+
+            res.status(201).send('Location created and weather data updated successfully');
         } catch (error) {
-            console.error(error)
-            res.status(500).send('Failed to create location')
+            console.error(error);
+            res.status(500).send('Failed to create location');
         }
     }
     
