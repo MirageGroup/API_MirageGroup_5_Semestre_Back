@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API_KEY: any = process.env.API_KEY
+const API_KEY_OPEN_WEATHER: any = process.env.API_KEY_OPEN_WEATHER
 
 export default class OpenWeatherService {
     private readonly baseUrl: string
@@ -15,7 +15,7 @@ export default class OpenWeatherService {
                 params: {
                     lat,
                     lon,
-                    appid: API_KEY
+                    appid: API_KEY_OPEN_WEATHER
                 }
             })
 

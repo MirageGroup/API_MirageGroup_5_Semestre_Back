@@ -1,15 +1,27 @@
 import { initializeApp } from "firebase/app"
 import { getFirestore } from "firebase/firestore"
+import * as dotenv from 'dotenv'
+
+dotenv.config()
+
+const API_KEY_FIREBASE: any = process.env.API_KEY_FIREBASE;
+const AUTH_DOMAIN: any = process.env.AUTH_DOMAIN;
+const DATABASE_URL: any = process.env.DATABASE_URL;
+const PROJECT_ID: any = process.env.PROJECT_ID;
+const STORAGE_BUCKET: any = process.env.STORAGE_BUCKET;
+const MESSAGING_SEND_ID: any = process.env.MESSAGING_SEND_ID;
+const APP_ID: any = process.env.APP_ID;
+const MEASUREMENT_ID: any = process.env.MEASUREMENT_ID;
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAlqBplUXMYQOhocAMaIHiij-os0L7GHMA",
-  authDomain: "api5-2.firebaseapp.com",
-  databaseURL: "https://api5-2-default-rtdb.firebaseio.com",
-  projectId: "api5-2",
-  storageBucket: "api5-2.appspot.com",
-  messagingSenderId: "313613866484",
-  appId: "1:313613866484:web:5539df405944f0672915a1",
-  measurementId: "G-NCPLHH0H4L"
+  apiKey: API_KEY_FIREBASE,
+  authDomain: AUTH_DOMAIN,
+  databaseURL: DATABASE_URL,
+  projectId: PROJECT_ID,
+  storageBucket: STORAGE_BUCKET,
+  messagingSenderId: MESSAGING_SEND_ID,
+  appId: APP_ID,
+  measurementId: MEASUREMENT_ID
 }
 
 export const app = initializeApp(firebaseConfig)
