@@ -19,7 +19,6 @@ cron.schedule('*/1 * * * *', async () => {
     try {
         const localesSnapshot = await getDocs(collection(firestore, 'locales'))
 
-        // Mapeando e aplicando a interface para garantir a tipagem correta
         const locales: Location[] = localesSnapshot.docs.map(doc => ({
             ...doc.data() as Location,
             id: doc.id

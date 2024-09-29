@@ -21,13 +21,13 @@ export default class LocationController {
             crop_name = null,
             latitude,
             longitude,
-            temperature = null,
+            temperature = 0,
             temperature_min = null,
             temperature_max = null,
-            rainfall = null,
+            rainfall = 0,
             rainfall_min = null,
             rainfall_max = null,
-            humidity = null,
+            humidity = 0,
             humidity_min = null,
             humidity_max = null
         } = req.body
