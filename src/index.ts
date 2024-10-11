@@ -2,7 +2,7 @@ import Express, { Request, Response } from 'express'
 import cors from 'cors'
 import appDataSource from './infra/data-source'
 import { locationRouter, userRouter } from './routes'
-import './jobs/weatherUpdateCron'
+// import './jobs/weatherUpdateCron'
 
 const app = Express()
 require('dotenv').config() 

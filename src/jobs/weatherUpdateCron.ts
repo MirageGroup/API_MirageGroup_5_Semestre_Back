@@ -33,7 +33,7 @@ cron.schedule('*/1 * * * *', async () => {
             const weatherData = await openWeatherService.fetchWeatherData(location.latitude, location.longitude)
 
             const currentTemperatureC = openWeatherService.convertKelvinToCelsius(weatherData.main.temp)
-            const formattedTemperature = currentTemperatureC.toFixed(2)
+            const formattedTemperature = currentTemperatureC.toFixed(0)
             const humidity = weatherData.main.humidity
 
             const previousTemperatureC = location.temperature !== undefined ? location.temperature : 'desconhecida'

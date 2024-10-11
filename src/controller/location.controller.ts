@@ -61,7 +61,7 @@ export default class LocationController {
             
             const weatherData = await this.openWeatherService.fetchWeatherData(latitude, longitude);
             const currentTemperatureC = this.openWeatherService.convertKelvinToCelsius(weatherData.main.temp);
-            const formattedTemperature = currentTemperatureC.toFixed(2);
+            const formattedTemperature = currentTemperatureC.toFixed(0);
             const humidity = weatherData.main.humidity;
 
             const locationDoc = doc(firestore, 'locales', locationRef.id);

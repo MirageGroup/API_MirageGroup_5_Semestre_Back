@@ -24,7 +24,7 @@ export default class WeatherController {
 
             // Converter temperatura para Celsius
             const currentTemperatureC = this.openWeatherService.convertKelvinToCelsius(weatherData.main.temp)
-            const formatedTemperture = currentTemperatureC.toFixed(2)
+            const formatedTemperture = currentTemperatureC.toFixed(0)
             const humidity = weatherData.main.humidity
 
             // ALERTAS de extremidades climaticas
