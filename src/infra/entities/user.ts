@@ -1,10 +1,11 @@
 import { 
   Column, 
   Entity, 
-  PrimaryGeneratedColumn, 
+  PrimaryGeneratedColumn,
+  Table, 
 } from "typeorm"
 
-@Entity()
+@Entity('users')
 export default class User {
   @PrimaryGeneratedColumn()
   id!: number
