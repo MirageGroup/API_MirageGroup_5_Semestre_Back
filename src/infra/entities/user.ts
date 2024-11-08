@@ -15,4 +15,7 @@ export default class User {
 
   @Column()
   password!: string
+
+  @Column()
+  name!: string
 }

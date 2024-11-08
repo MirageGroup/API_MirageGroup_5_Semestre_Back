@@ -18,4 +18,16 @@ userRouter.post('/login', async (req, res) => {
     await controller.loginController(req, res)
 })
 
+userRouter.get('/getprofile/:id', async (req, res) => {
+    await controller.getProfileController(req, res)
+})
+
+userRouter.patch('/update/:id', async (req, res) => {
+    await controller.updateUserController(req, res)
+})
+
+userRouter.delete('/delete/:id', async (req, res) => {
+    await controller.deleteUserController(req, res)
+})
+
 export default userRouter
